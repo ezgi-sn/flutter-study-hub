@@ -33,47 +33,19 @@ class _MainPageState extends State<MainPage> {
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: SizedBox(
-              width: 200, height: 200,
-              child: Image.asset("resources/pizza.jpeg")
-              ),
+                width: 200,
+                height: 200,
+                child: Image.asset("resources/pizza.jpeg")),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: mainColor),
-                  child: Text(
-                    "Cheese",
-                    style: TextStyle(color: primaryTextColor),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: mainColor),
-                  child: Text(
-                    "Sausage",
-                    style: TextStyle(color: primaryTextColor),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: mainColor),
-                  child: Text(
-                    "Olive",
-                    style: TextStyle(color: primaryTextColor),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: mainColor),
-                  child: Text(
-                    "Pepper",
-                    style: TextStyle(color: primaryTextColor),
-                  ),
-                ),
+                Chip(content: "Cheese"),
+                Chip(content: "Sausage"),
+                Chip(content: "Olive"),
+                Chip(content: "Pepper"),
               ],
             ),
           ),
@@ -110,27 +82,47 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                  "\$5.90",
-                  style: TextStyle(
-                      fontSize: 44,
-                      color: mainColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: 200, height: 50,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: 
-                    TextButton.styleFrom(backgroundColor: mainColor, shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))) ),
-                    child: Text(
-                      "ADD TO CART",
-                      style: TextStyle(color: primaryTextColor),
-                    ),
+                "\$5.90",
+                style: TextStyle(
+                    fontSize: 44,
+                    color: mainColor,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                width: 200,
+                height: 50,
+                child: TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                      backgroundColor: mainColor,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(5)))),
+                  child: Text(
+                    "ADD TO CART",
+                    style: TextStyle(color: primaryTextColor),
                   ),
                 ),
+              ),
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class Chip extends StatelessWidget {
+  String content;
+  Chip({required this.content});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      style: TextButton.styleFrom(backgroundColor: mainColor),
+      child: Text(
+        content,
+        style: TextStyle(color: primaryTextColor),
       ),
     );
   }
