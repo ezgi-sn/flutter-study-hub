@@ -1,5 +1,6 @@
 import 'package:basics/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -11,6 +12,12 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
+    var screenInfo = MediaQuery.of(context);
+    final double screenHeight = screenInfo.size.height; //600
+    final double screenWidth = screenInfo.size.width; //800
+
+    var holderOfVariables = AppLocalizations.of(context);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -25,9 +32,9 @@ class _MainPageState extends State<MainPage> {
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Text(
-              "Beef Cheese",
+              holderOfVariables!.pizzaBaslik,
               style: TextStyle(
-                  fontSize: 36, color: mainColor, fontWeight: FontWeight.bold),
+                  fontSize: screenWidth/22, color: mainColor, fontWeight: FontWeight.bold),
             ),
           ),
           Padding(
@@ -42,10 +49,10 @@ class _MainPageState extends State<MainPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Chip(content: "Cheese"),
-                Chip(content: "Sausage"),
-                Chip(content: "Olive"),
-                Chip(content: "Pepper"),
+                Chip(content: holderOfVariables.peynirYazi),
+                Chip(content: holderOfVariables.sucukYazi),
+                Chip(content: holderOfVariables.zeytinYazi),
+                Chip(content: holderOfVariables.biberYazi),
               ],
             ),
           ),
@@ -54,23 +61,23 @@ class _MainPageState extends State<MainPage> {
             child: Column(
               children: [
                 Text(
-                  "20 mins",
+                  holderOfVariables.teslimatSuresi,
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: screenWidth/41,
                       color: secondaryTextColor,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  "Delivery",
+                  holderOfVariables.teslimatBaslik,
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: screenWidth/41,
                       color: primaryTextColor,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  "Meat lover, get ready to meet your pizza!",
+                  holderOfVariables.pizzaAciklama,
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: screenWidth/41,
                     color: secondaryTextColor,
                   ),
                   textAlign: TextAlign.center,
@@ -82,15 +89,15 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                "\$5.90",
+                holderOfVariables.fiyat,
                 style: TextStyle(
-                    fontSize: 44,
+                    fontSize: screenWidth/22,
                     color: mainColor,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                width: 200,
-                height: 50,
+                width: screenWidth/4,
+                height: screenWidth/12,
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
@@ -98,7 +105,7 @@ class _MainPageState extends State<MainPage> {
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(5)))),
                   child: Text(
-                    "ADD TO CART",
+                    holderOfVariables.butonYazi,
                     style: TextStyle(color: primaryTextColor),
                   ),
                 ),
