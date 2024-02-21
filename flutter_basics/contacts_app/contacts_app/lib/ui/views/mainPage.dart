@@ -9,11 +9,38 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  bool isSearching = false;
+
+  Future<void> search(String keyword) async {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contacts"),
+        title: isSearching ? 
+        TextField(decoration: const InputDecoration(hintText: "Search"),
+        onChanged: (value) {
+          search(value);
+        },
+        ) : 
+        const Text("Contacts"),
+        actions: [
+          isSearching
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isSearching = false;
+                    });
+                  },
+                  icon: const Icon(Icons.clear))
+              : IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isSearching = true;
+                    });
+                  },
+                  icon: const Icon(Icons.search))
+        ],
       ),
       body: const Center(),
       floatingActionButton: FloatingActionButton(
